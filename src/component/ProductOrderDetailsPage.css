@@ -1,0 +1,179 @@
+.pd-all {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(98, 168, 230);
+    text-align: center;
+    height: 95vh;
+}
+
+.pd-header {
+    background-color: #fff;
+    height: 4vh;
+    margin-bottom: 2px;
+    box-shadow: 0 0 2px 1px rgba(229, 235, 235, 0.5);
+}
+
+.pd-container {
+    display: flex;
+    width: 70%;
+    border: 1px solid whitesmoke;
+}
+
+.pd-images {
+    border: 1px solid red;
+    background-color: rgb(207, 128, 26);
+    display: flex;
+    flex-direction: column;
+    padding: 1vh;
+    width: fit-content;
+    height: fit-content;
+    justify-content: end;
+}
+
+.pd-image {
+    border: 1px solid green;
+    background-color: rgb(203, 248, 248);
+    height: 450px;
+    width: 450px;
+}
+
+.pd-image img {
+    height: 450px;
+    width: 450px;
+    object-fit: contain;
+}
+
+.pd-btn {
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid black;- */
+    margin: 2px 2px;
+    cursor: pointer;
+}
+
+.pd-btn #pd-btn-1 {
+    background: #ff9f00;
+}
+
+.pd-btn #pd-btn-2 {
+    background: #fb641b;
+}
+
+.pd-btn div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    border: 1px solid whitesmoke;
+    width: 11vw;
+}
+
+.pd-all-details {
+    padding: 2px 8px;
+    text-align: left;
+    margin: 1vh 0;
+}
+
+h2 {
+    letter-spacing: 0.5px;
+    font-size: 18px;
+}
+
+.pd-isRated {
+    margin-top: 1.5vh;
+    color: blue;
+    display: flex;
+    text-align: center;
+}
+
+.pd-isRated p {
+    margin-right: 0.8vw;
+    font-size: 15px;
+}
+
+.pd-price {
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    height: 5vh;
+    margin: 1vh 0;
+}
+
+h3 {
+    margin-left: 14px;
+}
+
+h1 {
+    font-weight: 100;
+}
+
+.pd-rs-off {
+    color: grey;
+    text-decoration: line-through;
+}
+
+.pd-p-off {
+    color: green;
+}
+
+.pd-offer-details div {
+    display: flex;
+    margin: 1vh;
+}
+
+.pd-offer-details div img {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+}
+
+div p {
+    font-size: medium;
+}
+
+.pd-address-details {
+    display: flex;
+    margin: 1vh 1vw;
+    margin-top: 4vh;
+}
+
+.pd-address-details div {
+    display: flex;
+    margin: 0vh 1vw;
+}
+
+.pd-address-details p {
+    color: grey;
+    font-weight: lighter;
+}
+
+.pd-address {
+    width: fit-content;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+}
+
+.pd-delivery {
+    display: flex;
+    margin-left: 5vw;
+}
+
+.pd-delivery p {
+    margin: 0 4px;
+    font-weight: 100
+}
+
+.pd-ratting {
+    display: flex;
+    color: grey;
+    margin: 0 0.5vw;
+}
+
+.pd-image2{
+    height: 450px;
+    width: 450px;
+    margin-right: 5px;
+
+}

@@ -1,0 +1,19 @@
+.categories{
+    text-align: center;
+    box-shadow: 0 1px 4px grey;
+    background-color: white;
+}
+.category{
+    display: inline-flex;
+    justify-content: space-around;
+    flex-direction: column;
+    font-size: x-small;
+    text-align: center;
+    margin: 0 2vw;
+}
+.categories img{
+    height: 50px;
+    width: 50px;
+    margin-top: 1vh;
+    max-height: 50px;
+}

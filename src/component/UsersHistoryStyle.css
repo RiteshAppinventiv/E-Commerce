@@ -1,0 +1,32 @@
+.heading{
+    /* display: flex; */
+    /* flex-direction: row;  */
+    margin: 1rem;
+    /* float:left; */
+}
+
+.heading:first-child{
+    display: flex;
+    font-size: medium;
+    text-align: center;
+}
+
+.heading:first-child p{
+    font-size: medium;
+}
+
+
+.story{
+    margin: 1vh 1vw;
+    /* border: solid grey; */
+    background-color: aliceblue;
+}
+.key{
+    color: grey;
+    font-size: medium;
+}
+
+.value{
+    font-weight: 300;
+    font-size: small;
+}

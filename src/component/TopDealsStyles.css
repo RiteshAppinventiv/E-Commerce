@@ -1,0 +1,82 @@
+.card{
+    /* background-color: aliceblue; */
+    text-align: center;
+    height: 40.5vh;
+    margin: 1.2rem 2rem;
+    margin-bottom: 2.0rem;
+    box-shadow: 0 1px 4px grey;
+}
+
+.deal-header{
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    height: 6vh;
+    align-items: center;
+}
+
+.deal-header h5{
+    margin-left: 1rem;
+    font-weight: 100;
+}
+
+.view-all{
+    background-color: blue;
+    color: white;
+    height: 1.5rem;
+    width: 6vw;
+    text-align: center;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    box-shadow: 0 0px 2px grey;
+    font-size: x-small;
+}
+
+.all-products{
+    display: flex;
+    overflow: auto;
+    justify-content: space-around;
+    cursor: default;
+}
+
+div p{
+    font-size: x-small;
+    padding: 2px;
+}
+
+
+.product img{
+    height: 18vh;
+    /* width: 5rem; */
+}
+
+.product-off{
+    color: green;
+}   
+
+.product-brand{
+    color: gray;
+}
+.product{
+    text-align: center;
+    margin-right: 1rem 2rem;
+    margin-top: 1vh;
+    width: 150px;
+    margin-left: 1rem;
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 10;
+    margin-bottom: 2px;
+}
+
+.product:hover {
+    height: 217px;
+    width: 158px;
+    box-shadow: 0 0 2px 1px rgba(37, 38, 38, 0.5);
+  }

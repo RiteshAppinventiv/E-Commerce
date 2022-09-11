@@ -1,0 +1,20 @@
+.images{
+    margin: 3vh 2.5vw;
+    /* margin-top: 2vh; */
+}
+
+.images img{
+    height: 30vh;
+}
+
+.carousel .thumb{
+    width: 5%;
+    height: 50px;
+}
+
+.carousel{
+    text-align: center;
+    color: aqua;
+    overflow: hidden;
+	transform: translateZ(0px);
+}
