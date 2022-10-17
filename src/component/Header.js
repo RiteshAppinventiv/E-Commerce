@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./HeaderStyles.css";
 import { useHistory } from "react-router-dom";
-
+import Popup from "./LoginPopUp";
+import Login from "./Login";
 
 // const loginbtn=()=>{
 
@@ -9,25 +10,50 @@ import { useHistory } from "react-router-dom";
 
 const Header = () => {
   const history = useHistory();
+  const [isOpen, setIsOpen] = useState(false);
 
-  const loginbtn = () => {
-		// history.push("/login")
-	}
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div>
+    <div className="header-div">
       <header>
-        <img
-          src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png"
-          alt=""
-        />
+        <div className="fl-logo-div">
+          <img
+            id="fl-logo"
+            src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png"
+            alt=""
+          />
+        </div>
         <div className="search">
-          <input type="text" placeholder="Search for products,brands and more" />
+          <input
+            type="text"
+            placeholder="Search for products,brands and more"
+          />
           <div className="icon">🔍</div>
         </div>
         {/* <button className="login" onClick={loginbtn}>Login</button> */}
-        <button className="login" onClick={()=>{history.push('/login/Ritesh')}}>Login</button>
-        <p>Become a Seller</p>
-        <div className="cart">🛒 Cart</div>
+        <div className="login-button-div">
+          <button className="login" onClick={togglePopup}>
+            Login
+          </button>
+          {isOpen && (
+            <Popup
+              content={
+                <>
+                  <Login />
+                  {/* <Login/> */}
+                </>
+              }
+              handleClose={togglePopup}
+            />
+          )}
+          <div className="cart-div">
+            <span>Become a Seller</span>
+            <div className="cart">🛒 Cart</div>
+          </div>
+        </div>
       </header>
     </div>
   );

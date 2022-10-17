@@ -3,7 +3,7 @@ import "./RecentlyViewedStyles.css";
 
 const RecentlyViewedComponent = ({ item, index }) => {
   return (
-    <div className="container" key={index}>
+    <div className="containers" key={index}>
       <div className="p-images">
         <img src={item.img} alt="mobile" />
         <p>🤍</p>

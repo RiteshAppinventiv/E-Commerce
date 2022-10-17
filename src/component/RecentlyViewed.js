@@ -66,7 +66,7 @@ const recentlyViewProducts=[
 ]
 
   return (
-    <div className="card">
+    <div className="cards">
       <CardHeader title="Recently Viewed"/>
       <div className="all-products">
       {

@@ -52,7 +52,7 @@ const TopDeals = () => {
 
 
   return (
-    <div className="card">
+    <div className="cards">
       <CardHeader title="Deals of the Day"/>
       <div className="all-products">
       {

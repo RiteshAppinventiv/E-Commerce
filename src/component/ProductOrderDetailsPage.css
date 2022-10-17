@@ -1,8 +1,8 @@
 .pd-all {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     display: flex;
     justify-content: center;
-    background-color: rgb(98, 168, 230);
+    /* background-color: rgb(98, 168, 230); */
     text-align: center;
     height: 95vh;
 }
@@ -93,7 +93,7 @@ h2 {
 }
 
 .pd-price {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     align-items: center;
     height: 5vh;
@@ -150,7 +150,7 @@ div p {
 
 .pd-address {
     width: fit-content;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
 }

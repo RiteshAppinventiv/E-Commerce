@@ -13,6 +13,34 @@ header {
     align-items: center;
     padding: 0 16vw;
     /* justify-content: center; */
+    
+}
+
+@media screen and (max-width: 1180px) {
+    header{
+        display: block;
+        height: 130px;
+        padding: 20px 0px;
+    }
+    header input{
+        width: 100%;
+    }
+    .login-button-div{
+        
+        margin: 10px auto;
+        display: flex;
+        justify-content: center;
+    }
+}
+.login-button-div{
+    display: flex;
+}
+
+.cart-div{
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header input {
@@ -39,8 +67,8 @@ header p{
 }
 
 img {
-    width: 5rem;
-    height: 1.5rem;
+    width: 6rem;
+    height: 35px;
 }
 
 .search {
@@ -54,12 +82,34 @@ img {
     justify-content: space-between;
 }
 
+.search input{
+    width: 100%;
+}
+@media screen and (max-width: 1180px) {
+    .search{
+        width: 98%;
+    }
+}
+
 .icon {
     cursor: pointer;
     padding: 0 0.5vw;
 }
 
+#fl-logo{
+    width: 75px;
+    height: 24px;
+    
+}
+@media screen and (max-width: 1180px) {
+    .fl-logo-div{
+        display: flex;
+        justify-content: center;
+    }
+}
+
 .login {
+    cursor: pointer;
     background-color: white;
     border: none;
     height: 2rem;
@@ -70,6 +120,9 @@ img {
 }
 
 .cart{
+    display: flex;
+    align-items: center;
     font-size: 12px;
-    margin-left: 5vw;
+    /* margin-left: 5vw; */
 }
+
