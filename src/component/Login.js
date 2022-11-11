@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignUp from "./SignUp";
 import LoginFormInput from "./LoginFormInput";
+import OtpComponent from "./OtpComponent";
+import axios from "axios";
+import { serverHost } from "../environment";
+import "react-toastify/dist/ReactToastify.css";
+import { notifyError, notifySucess } from "../context/notificationContext";
 
-const Login = () => {
+const Login = (props) => {
   const [isSignUp, setIsSignUp] = useState(false);
+  const [isOtpScreen, setIsOtpScreen] = useState(false);
+
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -28,7 +35,8 @@ const Login = () => {
       errorMessage:
         "Password should be 3-20 characters and include atleast 1 letter, 1  number and 1 special character!",
       label: "Password",
-      pattern: "^[a-zA-Z0-9]{3,16}$",
+      pattern:
+        "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
       required: true,
     },
   ];
@@ -40,14 +48,43 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submit event");
+
+    let data = {
+      email: values["email"],
+      password: values["password"],
+    };
+
+    axios
+      .post(`${serverHost}/user/login`, data)
+      .then((res) => {
+        console.log("ressssss", res);
+        if (res.data.statusCode === 200) {
+          notifySucess(res.data.message);
+          const token = window.localStorage.setItem("token", res.data.token);
+          props.setIsOpen(false);
+        } else if (res.data.statusCode === 201) {
+          setIsOtpScreen(true);
+          notifyError(res.data.message);
+        } else if (res.data.message) {
+          notifyError(res.data.message);
+        } else {
+          notifySucess("Something went wrong");
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+        props.setIsOpen(false);
+        notifyError(err.message);
+      });
   };
 
-
   return isSignUp ? (
-    <SignUp />
+    <SignUp setIsOpen={props.setIsOpen} />
+  ) : isOtpScreen ? (
+    <OtpComponent email={values["email"]} setIsOpen={props.setIsOpen} />
   ) : (
-    <section className="vh-70" style={{ backgroundColor: "#9A616D" }}>
-      <div className="container py-5 h-100">
+    <section className="vh-80" style={{ backgroundColor: "#9A616D" }}>
+      <div className="container py-5 h-70">
         <div
           className="row d-flex justify-content-center align-items-center h-100"
           // style={{ backgroundColor: "red" }}

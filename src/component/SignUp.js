@@ -1,7 +1,13 @@
 import React, { useState } from "react";
+import OtpComponent from "./OtpComponent";
 import SignUpFormInput from "./SignUpFormInput";
+import { serverHost } from "../environment";
+import axios from "axios";
+import { notifyError } from "../context/notificationContext";
 
-function SignUp() {
+function SignUp(props) {
+  const [isOtpSend, setIsOtpSend] = useState(false);
+
   const [values, setValues] = useState({
     name: "",
     email: "",
@@ -34,9 +40,10 @@ function SignUp() {
       type: "password",
       placeholder: "Password",
       errorMessage:
-        "Password should be 3-20 characters and include atleast 1 letter, 1  number and 1 special character!",
+        "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!",
       label: "Password",
-      pattern: "^[a-zA-Z0-9]{3,16}$",
+      pattern:
+        "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
       required: true,
     },
     {
@@ -44,8 +51,7 @@ function SignUp() {
       name: "confirmPassword",
       type: "password",
       placeholder: "Repeat your password",
-      errorMessage:
-        "Password don't match!",
+      errorMessage: "Password don't match!",
       label: "Confirm your password",
       pattern: values.password,
       required: true,
@@ -56,14 +62,40 @@ function SignUp() {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("submit event");
+    console.log("submit event", values);
+
+    let data = {
+      name: values["name"],
+      email: values["email"],
+      password: values["password"],
+    };
+
+    axios
+      .post(`${serverHost}/user/signUp`, data)
+      // fetch(`${serverHost}/user/signUp`,{
+      //   method: 'POST',
+      //   headers: {
+      //     'content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(data)
+      // })
+      .then((res) => {
+        console.log("signup ");
+        console.log("response=== ", res);
+        if (res.data.statusCode !== 200) notifyError(res.data.message);
+        else setIsOtpSend(true);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
-
-  return (
-    <section className="vh-70" style={{ backgroundColor: "#eee"}}>
+  return isOtpSend ? (
+    <OtpComponent email={values["email"]} setIsOpen={props.setIsOpen} />
+  ) : (
+    <section className="vh-70" style={{ backgroundColor: "#eee" }}>
       <div className="container h-70">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11">
@@ -76,7 +108,6 @@ function SignUp() {
                     </p>
 
                     <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
-
                       {inputs.map((input) => (
                         <SignUpFormInput
                           key={input.id}
@@ -85,20 +116,6 @@ function SignUp() {
                           onChange={onChange}
                         />
                       ))}
-
-                      <div className="d-flex flex-row align-items-center mb-4">
-                        <i className="fas fa-key fa-lg me-3 fa-fw"></i>
-                        <div className="form-outline flex-fill mb-0">
-                          <input
-                            type="password"
-                            id="form3Example4cd"
-                            className="form-control"
-                            style={{ height: "2rem" }}
-                            placeholder="Repeat your password"
-                          />
-                          
-                        </div>
-                      </div>
 
                       <div className="form-check d-flex justify-content-center mb-5">
                         <input

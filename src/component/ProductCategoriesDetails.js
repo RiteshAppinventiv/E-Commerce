@@ -1,41 +1,62 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // import { Route, useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { allProducts, productList0, productList1, productList2, productList3, productList4, productList5, productList6 } from "../constant";
+import { notifyError } from "../context/notificationContext";
 import ProductCategoriesDetailsSub from "./ProductCategoriesDetailsSub";
 
-const ProductCategoriesDetails = () => {
-    const { name } = useParams();
-    document.title="Product Details Page" 
-    let productList=[]
+import axios from "axios";
+import { serverHost } from "../environment";
+import ProductCatagoriesHighlightless from "./ProductCatagoriesHighlightless";
+import "./ProductCategoriesDetailsStyle.css"
 
-    if(name.includes("Shower"))
-      productList=productList0
-    else if(name.includes("Crop Tops, Bra"))
-      productList=productList1    
-    else if(name.includes("Titan, Fastrack, Sonata"))
-      productList=productList2
-    else if(name.includes("Home Furnishing"))
-      productList=productList3
-    else if(name.includes("Necklaces, Earrings"))
-      productList=productList4 
-    else if(name.includes("Lowest Price"))
-      productList=productList5
-    else if(name.includes("Layasa, Bruton, Chevit"))
-      productList=productList6
-    else if(name.includes("all"))
-    productList=allProducts
-      
-    
-  return (
-    <div>
-      <div>
-      {
-          productList.map((item,index)=>(
-            <ProductCategoriesDetailsSub item={item} index={index}/>
-          ))
+const ProductCategoriesDetails = () => {
+  const [searchData, setSearchData] = useState([]);
+  const { name } = useParams();
+
+  
+  useEffect(() => {
+    // 👇️ only runs once
+    console.log("useEffect ran");
+    let data = {
+      title: name,
+    };
+    console.log("data------",data);
+    axios
+      .post(`${serverHost}/api/product/search`, data)
+      .then((res) => {
+        console.log("ressssss", res.data);
+        let newData=res.data.data
+        console.log(newData);
+        setSearchData(newData);
+        console.log("searchData---", searchData);
+        if(!res.data.data.length)
+          // return notifyError("Currently No Product Avaliable");
+        if (res.data.statusCode !== 200) {
+          notifyError(res.data.message);
         }
-      </div>
+
+      })
+      .catch((err) => {
+        console.log(err.message);
+        //   props.setIsOpen(false);
+        notifyError(err.message);
+      });
+  }, []); // 👈️ empty dependencies array
+
+  
+  document.title = "Product Details Page";
+
+  return (
+    <div >
+      {
+        searchData.length?
+        <div className="product-main-div">
+        {searchData.map((item, index) => (
+          item.isHighlightShow?<ProductCategoriesDetailsSub item={{_id:item._id,img:item.productPictures[0],title:item.title,highlights:item.Highlights,ratting:item.avgRatting,...item}} index={index} />:
+          <ProductCatagoriesHighlightless item={{_id:item._id,img:item.productPictures[0],title:item.title,highlights:item.Highlights,ratting:item.avgRatting,...item}} index={index} />
+        ))}
+      </div>:<centter>CURRENTLY NO DATA AVAILABLE</centter>
+      }
     </div>
   );
 };

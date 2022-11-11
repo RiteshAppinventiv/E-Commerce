@@ -1,19 +1,30 @@
 import React, { useState } from "react";
 import "./HeaderStyles.css";
-import { useHistory } from "react-router-dom";
 import Popup from "./LoginPopUp";
 import Login from "./Login";
-
-// const loginbtn=()=>{
-
-// }
+import { useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { notifySucess } from "../context/notificationContext";
 
 const Header = () => {
-  const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
+  const history = useHistory();
+  const token = window.localStorage.getItem("token");
 
   const togglePopup = () => {
-    setIsOpen(!isOpen);
+    if(!token)
+      setIsOpen(!isOpen);
+  };
+
+  const logout = () => {
+    if(!token)
+      notifySucess("ALready logout")
+    else{
+      console.log("hello............1")
+      window.localStorage.removeItem("token");
+
+      notifySucess("Logout successfully")
+    }
   };
 
   return (
@@ -35,14 +46,32 @@ const Header = () => {
         </div>
         {/* <button className="login" onClick={loginbtn}>Login</button> */}
         <div className="login-button-div">
-          <button className="login" onClick={togglePopup}>
-            Login
-          </button>
+          <div className="login-divv">
+            <div className="login-div-1">
+              <button className="login" onClick={togglePopup}>
+                {token ? "My Acount" : "Login"}
+              </button>
+              {token ? (
+                <div className="dropdown-menu">
+                  <a href="/">Home</a>
+                  <a href="#">About</a>
+                  <a href="#">Services</a>
+                  <a href="#">Portfolio</a>
+                  <a href="/" onClick={() => logout()}>
+                    Logout
+                  </a>
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+
           {isOpen && (
             <Popup
               content={
                 <>
-                  <Login />
+                  <Login setIsOpen={setIsOpen} />
                   {/* <Login/> */}
                 </>
               }
@@ -51,7 +80,14 @@ const Header = () => {
           )}
           <div className="cart-div">
             <span>Become a Seller</span>
-            <div className="cart">🛒 Cart</div>
+            <div
+              className="cart"
+              onClick={() => {
+                token?history.push(`/viewCart/`):togglePopup();
+              }}
+            >
+              🛒 Cart
+            </div>
           </div>
         </div>
       </header>

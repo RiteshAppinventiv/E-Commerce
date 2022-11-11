@@ -5,7 +5,7 @@ import "./CarouselComponentStyle.css"
 
 const CarouselCompontnt = () => {
   return (
-    <div>
+    <div className='carousel'>
         <Carousel className='images' autoPlay={true}
  infiniteLoop={true} showIndicators={false} showThumbs={false} showStatus={false}>
                 <div>

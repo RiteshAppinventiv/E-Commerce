@@ -1,82 +1,73 @@
-import React from 'react'
-import CardHeader from './CardHeader'
-import RecentlyViewedComponent from './RecentlyViewedComponent'
-import "./RecentlyViewedStyles.css"
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { notifyError } from "../context/notificationContext";
+import { serverHost } from "../environment";
+import CardHeader from "./CardHeader";
+import RecentlyViewedComponent from "./RecentlyViewedComponent";
+import "./RecentlyViewedStyles.css";
 
 function RecentlyViewed() {
+  const [searchData, setSearchData] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  var array = JSON.parse(window.localStorage.getItem("recent")) || []; //the "|| []" replaces possible null from localStorage with empty array
 
-const recentlyViewProducts=[
-    {
-        
-        img:"https://rukminim1.flixcart.com/image/312/312/l19m93k0/mobile/w/0/6/-original-imagcv2dcyjzcmvd.jpeg?q=70",
-        details:"POCO X4 Pro 5G(Laser Blue,128 GB)",
-        rating:"4.1 ✩",
-        ratingUser:"(9,326)",
-        price:"From ₹99.00"
-    },
-    {
-        img:"https://rukminim1.flixcart.com/image/200/200/kn97te80/backpack/f/8/o/boho-03-bpboh3gry-backpack-skybags-original-imagfyx4m85wp6te.jpeg?q=70",
-        details:"Stylish Backpacks",
-        rating:"4.1 ✩",
-        ratingUser:"(1,326)",
-        price:"From ₹599"
-    },
-    {
-        img:"https://rukminim1.flixcart.com/image/200/200/l432ikw0/headphone/n/g/n/-original-imagf2yzeffezg4g.jpeg?q=70",
-        details:"Gaming TWS",
-        rating:"4.1 ✩",
-        ratingUser:"(2,326)",
-        price:"From ₹899"
-    },
-    {
-        img:"https://rukminim1.flixcart.com/image/200/200/kr3tj0w0/bottle/m/d/j/cola-stainless-steel-insulated-8-hours-hot-and-cold-flask-original-imag4z2fv5qjj5me.jpeg?q=70",
-        details:"Flask",
-        rating:"4.0 ✩",
-        ratingUser:"(326)",
-        price:"From ₹399"
-    },
-    {
-        img:"https://rukminim1.flixcart.com/image/312/312/l19m93k0/mobile/w/0/6/-original-imagcv2dcyjzcmvd.jpeg?q=70",
-        details:"POCO X4 Pro 5G(Laser Blue,128 GB)",
-        rating:"4.1 ✩",
-        ratingUser:"(9,326)",
-        price:"From ₹99.00"
-    },       
-    {
-        img:"https://rukminim1.flixcart.com/image/200/200/kn97te80/backpack/f/8/o/boho-03-bpboh3gry-backpack-skybags-original-imagfyx4m85wp6te.jpeg?q=70",
-        details:"Stylish Backpacks",
-        rating:"4.1 ✩",
-        ratingUser:"(1,326)",
-        price:"From ₹599"
-    },
-    {
-        img:"https://rukminim1.flixcart.com/image/200/200/l432ikw0/headphone/n/g/n/-original-imagf2yzeffezg4g.jpeg?q=70",
-        details:"Gaming TWS",
-        rating:"4.1 ✩",
-        ratingUser:"(2,326)",
-        price:"From ₹899"
-    },
-    {
-        img:"https://rukminim1.flixcart.com/image/200/200/kr3tj0w0/bottle/m/d/j/cola-stainless-steel-insulated-8-hours-hot-and-cold-flask-original-imag4z2fv5qjj5me.jpeg?q=70",
-        details:"Flask",
-        rating:"4.0 ✩",
-        ratingUser:"(326)",
-        price:"From ₹399"
-    }
-]
+  console.log("recent ", array);
 
-  return (
+  useEffect(() => {
+    // 👇️ only runs once
+    console.log("useEffect ran");
+    let data = {
+      ids: array,
+    };
+    console.log("data------", data);
+    axios
+      .post(`${serverHost}/api/product/recent`, data)
+      .then((res) => {
+        console.log("recent data", res.data);
+        let newData = res.data.data;
+        console.log(newData);
+        setSearchData(newData);
+        setIsLoaded(true);
+        console.log("recent---", searchData);
+        if (res.data.statusCode !== 200) {
+          notifyError(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+        //   props.setIsOpen(false);
+        notifyError(err.message);
+      });
+  }, []); // 👈️ empty dependencies array
+
+
+  return array.length ? (
     <div className="cards">
-      <CardHeader title="Recently Viewed"/>
-      <div className="all-products">
-      {
-        recentlyViewProducts.map((item,index)=>(
-            <RecentlyViewedComponent item={item} index={index}/>
-        ))
-      }
-      </div>
+      <CardHeader title="Recently Viewed" />
+      {isLoaded ? (
+        <div className="all-products">
+          {searchData.map((item, index) => (
+            <RecentlyViewedComponent
+              item={{
+                _id: item._id,
+                img: item.productPictures[0],
+                details: item.title,
+                rating: item.avgRatting,
+                ratingUser: item.totalRatting,
+                originalPrice:item.originalPrice,
+                discountPercentage:item.discountPercentage
+              }}
+              index={index}
+            />
+          ))}
+        </div>
+      ) : (
+        "Loading..."
+      )}
     </div>
-  )
+  ) : (
+    ""
+  );
 }
 
-export default RecentlyViewed
+export default RecentlyViewed;

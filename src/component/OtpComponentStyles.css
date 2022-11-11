@@ -1,0 +1,45 @@
+.otpContainer{
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    padding: 20px;
+    align-items: space-around;
+    justify-content: center;
+    background-color: rgb(103, 103, 227);
+}
+
+.userInput{
+    display: flex;
+    justify-content: center;
+    /* border: 2px solid red; */
+}
+
+.otp-input{
+    margin: 10px;
+    height: 35px;
+    width: 65px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    font-family: arimo;
+    font-size: 1.1 rem;
+    background: #5dc9e4;
+}
+
+#h1{
+    text-align: center;
+    font-family: arimo;
+    color: honeydew;
+}
+
+.cnf-btn{
+    width: 150px;
+    height: 40px;
+    margin: 25px auto 0px auto;
+    font-family: arimo;
+    font-size: 1.1rem;
+    /* border: none; */
+    border-radius: 5px;
+    letter-spacing: 2px;
+    cursor: pointer;
+}

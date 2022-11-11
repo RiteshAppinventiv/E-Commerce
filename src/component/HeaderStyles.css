@@ -12,31 +12,43 @@ header {
     display: flex;
     align-items: center;
     padding: 0 16vw;
-    /* justify-content: center; */
-    
+    /* position: fixed;
+    top: 0;
+    width: 100%;; */
 }
 
-@media screen and (max-width: 1180px) {
-    header{
+
+.header-div{
+    min-width: 1200px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+@media screen and (max-width: 1180px) { 
+    header {
         display: block;
         height: 130px;
         padding: 20px 0px;
     }
-    header input{
+
+    header input {
         width: 100%;
     }
-    .login-button-div{
-        
+
+    .login-button-div {
+
         margin: 10px auto;
         display: flex;
         justify-content: center;
     }
 }
-.login-button-div{
+
+.login-button-div {
     display: flex;
 }
 
-.cart-div{
+.cart-div {
     width: 200px;
     display: flex;
     justify-content: space-between;
@@ -46,7 +58,7 @@ header {
 header input {
     height: 1.5rem;
     border-radius: 4px;
-    width:18rem;
+    width: 18rem;
     position: relative;
     background-color: rgba(255, 255, 255, 0.3);
     transition: 0.3s all;
@@ -56,11 +68,11 @@ header input {
     background-color: white;
 }
 
-header input:focus{
+header input:focus {
     outline: none;
 }
 
-header p{
+header p {
     cursor: pointer;
     text-align: center;
     font-size: 14px;
@@ -82,11 +94,12 @@ img {
     justify-content: space-between;
 }
 
-.search input{
+.search input {
     width: 100%;
 }
+
 @media screen and (max-width: 1180px) {
-    .search{
+    .search {
         width: 98%;
     }
 }
@@ -96,13 +109,14 @@ img {
     padding: 0 0.5vw;
 }
 
-#fl-logo{
+#fl-logo {
     width: 75px;
     height: 24px;
-    
+
 }
+
 @media screen and (max-width: 1180px) {
-    .fl-logo-div{
+    .fl-logo-div {
         display: flex;
         justify-content: center;
     }
@@ -116,13 +130,60 @@ img {
     width: 7rem;
     border-radius: 19px;
     color: blue;
-    margin: 0 5vw;
+    /* margin: 0 100px; */
 }
 
-.cart{
+.cart {
     display: flex;
     align-items: center;
     font-size: 12px;
+    cursor: pointer;
     /* margin-left: 5vw; */
 }
 
+.dropdown-menu{
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-menu a{
+    color: black;
+    padding: 12px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu a:hover{
+    background-color: rgba(0, 0, 0, 0.275);
+    color: #fff;
+}
+
+
+/* .login-button-div:hover .dropdown-menu{
+    display: inline-block;
+   
+} */
+
+/* .login:hover .dropdown-menu{
+    display: block;
+} */
+
+.login-div-1:hover .dropdown-menu{
+    width: 112px;
+    display: block;
+    background-color: white;
+} 
+
+.login-divv{
+    display: flex;
+    justify-content: center;
+    width: 300px;
+}
+
+
+/* .login-button-div{
+    display: flex;
+    justify-content: center;
+} */

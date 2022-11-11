@@ -1,4 +1,4 @@
-.productDetails{
+.productDetails {
     display: flex;
     /* background-color: antiquewhite; */
     /* align-items: center; */
@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 
-.image{
+.image {
     /* background-color: aliceblue; */
     /* height: 200px; */
     /* width: 200px; */
@@ -20,84 +20,111 @@
     align-items: center;
 }
 
-.image img{
+.image img {
     height: 200px;
-    width: 146px;
+    width: 200px;
+    object-fit: contain;
 }
 
-.details{
+.details {
     /* border: 2px solid red; */
     display: flex;
     justify-content: space-between;
-    width:60vw;
-    margin-left: 1rem;
+    width: 60vw;
 }
 
-.highlights{
+.highlights {
     /* background-color: aqua; */
     /* height: 25vh; */
-    width: 36vw;
+    margin: 0 2rem;
+    width: 600px;
 }
 
-.price{
+.price {
     /* background-color: aquamarine; */
     width: 16vw;
     display: flex;
 }
 
-.reviews{
+.reviews {
     display: flex;
     color: gray;
+    align-items: center;
 }
 
-.ratting{
+.ratting {
     background-color: green;
     border-radius: 2px;
     color: white;
-    font-size: larger;
-    text-align: center;
-    width: 2.2rem;
-    margin-right: 0.5rem;
-    display: flex;
-    padding-left: 1px;
+    /* font-size: larger; */
+    /* text-align: center; */
+    /* width: 2.2rem; */
+    /* margin:0 0.5rem; */
+    /* display: flex; */
     align-items: center;
-}
-.highlight{
-    margin: 0.5rem;
+    justify-content: center;
+    /* text-align: center; */
 }
 
-.priceDetails{
+.highlight {
+    /* margin: 0.5rem; */
+}
+
+ul li::before {
+    content: "\2022";
+    color: gray;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+}
+
+.priceDetails {
     /* background-color: aliceblue; */
     display: flex;
     flex-direction: column;
 }
-.off{
+
+.off {
     display: flex;
 }
 
-.off p{
+.off p {
     color: gray;
-    font-size: medium;
+    /* font-size: medium; */
     text-decoration: line-through;
 }
 
-.off span{
+.off span {
     color: green;
 }
 
-.price img{
+.price img {
     margin-left: 1rem;
 }
 
-h2{
+h2 {
     font-weight: 300;
 }
 
-h3{
+h3 {
     font-weight: 300;
 }
 
-li{
-    
+li {
     font-weight: 100;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    /* width: 650px; */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.product-main-div{
+    min-width: 900px;
+    /* margin: 50px; */
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* flex-wrap: wrap; */
 }

@@ -16,7 +16,7 @@ const SignUpFormInput = (props) => {
       <label className="form-label" for="form3Example4cd">{label}</label>
         <input
           id="form3Example1c"
-          className="form-control"
+          className="form-control form-control-sm"
           {...inputProps}
           onChange={onChange}
           onBlur={handleFocus}

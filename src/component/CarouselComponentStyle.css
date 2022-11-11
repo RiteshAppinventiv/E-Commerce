@@ -1,5 +1,6 @@
 .images{
     margin: 15px 1.8vw;
+  
     /* margin: 0px; */
     /* margin-top: 2vh; */
 }
@@ -7,7 +8,10 @@
 .images img{
     height: 300px;
 }
-
+.carousel{
+    z-index: 0;
+}
+/* 
 .carousel .thumb{
     width: 5%;
     height: 50px;
@@ -18,4 +22,4 @@
     color: aqua;
     overflow: hidden;
 	transform: translateZ(0px);
-}
+} */

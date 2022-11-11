@@ -16,47 +16,59 @@
 
 .pd-container {
     display: flex;
-    width: 70%;
+    /* padding: 0 200px; */
     border: 1px solid whitesmoke;
 }
 
-.pd-images {
-    border: 1px solid red;
-    background-color: rgb(207, 128, 26);
+.pd-img-list {
+    /* background-color: #fb641b; */
+    height: 450px;
+    /* width: 100px; */
+    /* overflow-x: auto; */
+    overflow: auto;
+}
+
+.pd-img-details {
     display: flex;
-    flex-direction: column;
-    padding: 1vh;
+}
+
+.pd-images {
+    /* background-color: rgb(207, 128, 26); */
+    /* padding: 1vh; */
     width: fit-content;
     height: fit-content;
     justify-content: end;
 }
 
 .pd-image {
-    border: 1px solid green;
-    background-color: rgb(203, 248, 248);
+    padding: 2px;
+    border: 1px solid rgb(234, 225, 225);
     height: 450px;
     width: 450px;
 }
 
 .pd-image img {
-    height: 450px;
-    width: 450px;
+    height: 440px;
+    width: 440px;
     object-fit: contain;
 }
 
 .pd-btn {
     display: flex;
     justify-content: space-between;
-    /* border: 1px solid black;- */
-    margin: 2px 2px;
+    /* border: 1px solid black; */
+    margin: 12px 12px;
     cursor: pointer;
 }
 
 .pd-btn #pd-btn-1 {
+    text-align: center;
+    padding-top: 2px;
     background: #ff9f00;
 }
 
 .pd-btn #pd-btn-2 {
+    padding-top: 2px;
     background: #fb641b;
 }
 
@@ -64,15 +76,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 5vh;
+    /* height: 5vh; */
     border: 1px solid whitesmoke;
-    width: 11vw;
+    width: 200px;
 }
 
 .pd-all-details {
     padding: 2px 8px;
     text-align: left;
     margin: 1vh 0;
+    width: 650px;
 }
 
 h2 {
@@ -101,11 +114,11 @@ h2 {
 }
 
 h3 {
-    margin-left: 14px;
+    /* margin: 5px; */
 }
 
 h1 {
-    font-weight: 100;
+    /* font-weight: 100; */
 }
 
 .pd-rs-off {
@@ -171,9 +184,136 @@ div p {
     margin: 0 0.5vw;
 }
 
-.pd-image2{
+.pd-image2 {
     height: 450px;
     width: 450px;
     margin-right: 5px;
 
+}
+
+.pd-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    width: 600px;
+    /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.img-container {
+    /* background-color: aliceblue; */
+    height: 64px;
+    width: 64px;
+    padding: 2px;
+    margin: 2px;
+}
+
+.img-container img {
+    height: 57px;
+    width: 57px;
+    object-fit: contain;
+}
+
+.img-container:hover {
+    border: 2px solid blue;
+}
+
+.pd-highlight {
+    display: flex;
+    margin: 15px 0px;
+}
+
+.pd-highlight p {
+    color: grey;
+    font-weight: 100;
+}
+
+.pd-h2 {
+    padding: 0px 30px;
+}
+
+.pd-ul {
+    list-style: none;
+}
+
+li {
+    list-style: none;
+}
+
+
+.fluid {
+    height: 440px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial;
+    /* line-height: 1.3; */
+    font-size: 16px;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: #666;
+}
+
+.code {
+    font-family: Courier New, Courier, monospace;
+}
+
+@media (min-width: 440px) {
+    .fluid {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        /* flex: 50%; */
+        background-color: rebeccapurple;
+        object-fit: contain;
+        height: 540px;
+        width: 540px;
+        object-fit: contain;
+  /* height: -fit-content; */
+  /* overflow: hidden; */
+    }
+
+    .fluid__image-container {
+        margin: 20px 20px 20px 20px;
+        flex: 0 0 70%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* flex: 50%; */
+        /* width: 440px; */
+        height: 440px;
+        max-height: 90%;
+        /* overflow: auto; */
+    }
+
+    .fluid__instructions {
+        flex: 0 0 50%;
+        padding-top: 30px;
+    }
+
+    .fixed__instructions {
+        padding-top: 30px;
+        margin: 0 10px;
+    }
+
+    .portal {
+        position: absolute;
+        top: 40px;
+        left: -30px;
+    }
+}
+
+@media screen and (max-width: 1250px) { 
+    .pd-all{
+        min-width: max-content;
+    }
 }

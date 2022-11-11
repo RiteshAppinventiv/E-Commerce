@@ -19,7 +19,7 @@
     background: #fff;
     border-radius: 4px;
     border: 1px solid #999;
-    /* overflow: auto; */
+    overflow: auto;
   }
    
   .close-icon {

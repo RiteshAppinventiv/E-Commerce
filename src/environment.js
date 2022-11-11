@@ -1,0 +1,1 @@
+export const serverHost="https://eflip.onrender.com";

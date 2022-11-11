@@ -1,0 +1,93 @@
+.h-main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    float: left;
+    width: 24%;
+    margin: 2px;
+    height: 400px;
+    border: 1px solid wheat;
+    /* background-color: rgb(47, 132, 206); */
+}
+.h-box{
+    /* background-color: antiquewhite; */
+    margin: 4px;
+    /* display: flex;
+    float: left; */
+
+    /* width: 24%; */
+}
+
+.h-container{
+    /* height: 356px; */
+    /* width: 481px; */
+    /* background-color: aqua; */
+    /* padding: 10px; */
+    margin: 5px;
+}
+
+.h-image-fav{
+    /* display: flex; */
+    position: relative;
+    /* justify-items: normal; */
+    /* background-color: yellowgreen; */
+}
+
+.h-img img{
+    height: 290px;
+    width: 560px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.h-ratting{
+    /* background-color: rgb(49, 127, 196); */
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 30px;
+    /* position: absolute; */
+    /* display: inline-block; */
+    /* top: 12px;
+    right: 12px; */
+    cursor: pointer;
+}
+
+.h-ratting span{
+    z-index: 5;
+}
+
+.h-details{
+    height: 50px;
+    /* background-color: blueviolet; */
+}
+
+.h-title{
+    display: flex;
+}
+
+.h-title span{
+    /* background-color: aqua; */
+    overflow: hidden;
+    width:100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.h-price-d{
+    display: flex;
+    font-size: medium;
+    /* margin: 0 12px; */
+}
+
+.h-price-d div{
+    margin: 0 5px;
+}
+
+.h-image img{
+    height: 20px;
+    /* width: 100%; */
+}
